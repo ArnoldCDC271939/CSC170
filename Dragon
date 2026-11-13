@@ -1,0 +1,37 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Adds a dragon actor to the world which will then move and create a fireball object at its location every 5 seconds
+ * 
+ * Carter Arnold
+ * 11/13/2026
+ */
+public class Dragon extends Actor
+{
+    /**
+     * Act - do whatever the Dragon wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    long lastAdded = System.currentTimeMillis();
+    public void act()
+    {
+        movement();
+        long currTime = System.currentTimeMillis();
+        if (currTime >= lastAdded + 2500) {
+            breatheFire();
+            lastAdded = System.currentTimeMillis();
+        }
+
+        // Add your action code here.
+    }
+    public void movement() {
+        int movementSpeed = 4;
+        move (movementSpeed);
+        if (getX() <= 3 || getX() >= getWorld().getWidth() - 3 ) {
+            turn(180);
+        }
+    }
+    public void breatheFire() {
+        getWorld().addObject(new Fireball(), getX(), getY());
+    }
+}
