@@ -1,0 +1,23 @@
+/**
+ * Fireball moves to the bottom of screen, once there it is deleted
+ * 
+ * Carter Arnold
+ * 11/13/2026
+ */
+public class Fireball extends Actor
+{
+    /**
+     * Act - do whatever the Fireball wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        move();
+        if (isAtEdge()) {
+            getWorld().removeObject(this);
+        }
+    }
+    public void move() {
+        setLocation(getX(), getY() + 5);
+    }
+}
