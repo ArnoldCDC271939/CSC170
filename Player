@@ -1,0 +1,46 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Provides Movement for the player and allows it to pass between sides of the world
+ * 
+ * Carter Arnold
+ * 11/13/2026
+ */
+public class Player extends Actor
+{
+    /**
+     * Act - do whatever the Player wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        movement();
+        wallLoop();
+    }
+    public void movement() {
+        if (Greenfoot.isKeyDown("up")) 
+        {
+            setLocation(getX(), getY() - 3);
+        }
+        if (Greenfoot.isKeyDown("down"))
+        {
+            setLocation(getX(), getY() + 3);
+        }
+        if (Greenfoot.isKeyDown("left"))
+        {
+            setLocation(getX() - 3, getY());
+        }
+        if (Greenfoot.isKeyDown("right"))
+        {
+            setLocation(getX() + 3, getY());
+        }
+    }    
+    public void wallLoop() {
+        if (getX() <= 2) {
+            setLocation(getWorld().getWidth() - 3, getY());
+        }
+        if (getX() >= getWorld().getWidth() - 2) {
+            setLocation(3, getY());
+        }
+    }
+}
