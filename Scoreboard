@@ -1,0 +1,41 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Scoreboard here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Scoreboard extends Actor
+{
+    /**
+     * Act - do whatever the Scoreboard wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    private int score = 0;
+    public Scoreboard() {
+        updateImage();
+    }
+    public void addScore(int points) {
+        score += points;
+        updateImage();
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public int getScore() {
+        return score;
+    }
+    public void act() {
+        if (score >= 100) {
+            setImage(new GreenfootImage("Victory!", 24, Color.WHITE, new Color(0, 0, 0, 0)));
+            Greenfoot.stop();
+        }
+    }
+    private void updateImage() {
+        setImage(new GreenfootImage("Score: " + score, 24, Color.WHITE, new Color(0, 0, 0, 0)));
+    }
+    public void loseScreen() {
+        setImage(new GreenfootImage("You Lose", 24, Color.WHITE, new Color(0, 0, 0, 0)));
+    }
+}
