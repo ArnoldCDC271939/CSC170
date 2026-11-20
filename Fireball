@@ -1,3 +1,5 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 /**
  * Fireball moves to the bottom of screen, once there it is deleted
  * 
@@ -10,14 +12,20 @@ public class Fireball extends Actor
      * Act - do whatever the Fireball wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+
+    Scoreboard score = DragonsDen.getScore();
     public void act()
     {
         move();
-        if (isAtEdge()) {
-            getWorld().removeObject(this);
-        }
+        collisionWithWall();
     }
     public void move() {
-        setLocation(getX(), getY() + 5);
+        setLocation(getX(), getY() + 10);
+    }
+    public void collisionWithWall() {
+            if (isAtEdge()) {
+                getWorld().removeObject(this);
+                score.addScore(2);
+        }
     }
 }
