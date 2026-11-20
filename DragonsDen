@@ -1,0 +1,106 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class MyWorld here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class DragonsDen extends World
+{
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    //declare variables for scoreboard and deploying monsters
+    long lastAdded = System.currentTimeMillis();
+    int delay = 4000;
+    int switchNum = -1;
+    static Scoreboard score = new Scoreboard();
+    //declare monsters
+            Monster monster1 = new Monster();
+            Monster monster2 = new Monster();
+            Monster monster3 = new Monster();
+            Monster monster4 = new Monster();
+            Monster monster5 = new Monster();
+            Monster monster6 = new Monster();
+            Monster monster7 = new Monster();
+            Monster monster8 = new Monster();
+            Monster monster9 = new Monster();
+            Monster monster10 = new Monster();
+    public DragonsDen()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(500, 500, 1); 
+        //Create Monsters
+
+        addObject(monster1, 25, 25);
+
+        addObject(monster2, 75, 25);
+        
+        addObject(monster3, 125, 25);
+        
+        addObject(monster4, 175, 25);
+        
+        addObject(monster5, 225, 25);
+        
+        addObject(monster6, 275, 25);
+        
+        addObject(monster7, 325, 25);
+        
+        addObject(monster8, 375, 25);
+        
+        addObject(monster9, 425, 25);
+        
+        addObject(monster10, 475, 25);
+        // initialize other actors
+        addObject(new Dragon(), 250, 75);
+        addObject(new Player(), 250, 450);
+        addObject(score, 250, 250);
+
+
+        prepare();
+    }
+    public void act() {
+        long currTime = System.currentTimeMillis();
+        if (currTime >= lastAdded + delay) {
+            switchNum = (int)Greenfoot.getRandomNumber(9);
+            switch (switchNum) {
+                case 0: monster1.move();
+                break;
+                case 1: monster2.move();
+                break;
+                case 2: monster3.move();
+                break;
+                case 3: monster4.move();
+                break;
+                case 4: monster5.move();
+                break;
+                case 5: monster6.move();
+                break;
+                case 6: monster7.move();
+                break;
+                case 7: monster8.move();
+                break;
+                case 8: monster9.move();
+                break;
+                case 9: monster10.move();
+                break;
+                
+            }
+            delay -= 100;
+            lastAdded = System.currentTimeMillis();
+        }
+
+    }
+    public static Scoreboard getScore() {
+        return score;
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+    }
+}
